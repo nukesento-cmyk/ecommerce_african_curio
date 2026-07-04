@@ -8,9 +8,9 @@ const IMAGES = {
   savanna: "https://images.unsplash.com/photo-1728042107033-76b13feac547?w=1920&h=1080&fit=crop&auto=format",
   
   // ART AND CRAFTS - focusing on the objects, not people
-  maasaiWoman: "https://images.stockcake.com/public/6/2/3/62376b2d-26b9-4c71-b3fc-d7fcf2982c13_large/joyful-colorful-portrait-stockcake.jpg", // Focus on the beadwork details
-  beadedNecklace: "https://images.stockcake.com/public/9/e/2/9e2b8c04-6cf7-4fb6-9d1f-4932c78dbb95_large/traditional-beadwork-motion-stockcake.jpg", // The beaded art piece
-  maasaiFull: "https://images.stockcake.com/public/c/a/c/caccf3af-f470-4482-bd49-48b21e92d3ff/traditional-beaded-attire-stockcake.jpg", // The textile/bedework art
+  maasaiWoman: "https://images.stockcake.com/public/6/2/3/62376b2d-26b9-4c71-b3fc-d7fcf2982c13_large/joyful-colorful-portrait-stockcake.jpg",
+  beadedNecklace: "https://images.stockcake.com/public/9/e/2/9e2b8c04-6cf7-4fb6-9d1f-4932c78dbb95_large/traditional-beadwork-motion-stockcake.jpg",
+  maasaiFull: "https://images.stockcake.com/public/c/a/c/caccf3af-f470-4482-bd49-48b21e92d3ff/traditional-beaded-attire-stockcake.jpg",
   
   // Other craft objects
   baskets: "https://images.unsplash.com/photo-1723578297503-78642a524074?w=800&h=700&fit=crop&auto=format",
@@ -278,85 +278,6 @@ function FloatingLantern({ x, delay }: { x: string; delay: string }) {
         boxShadow: "0 0 28px rgba(255,180,0,0.18),inset 0 0 18px rgba(255,200,80,0.1)",
       }} />
     </div>
-  );
-}
-
-// ─── African Door SVG ─────────────────────────────────────────────────────────
-function AfricanDoor({ side }: { side: "left" | "right" }) {
-  const isLeft = side === "left";
-  const id = side;
-  return (
-    <svg viewBox="0 0 300 600" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
-      <defs>
-        <linearGradient id={`wg${id}`} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%"   stopColor="#3d2408" />
-          <stop offset="30%"  stopColor="#5c3510" />
-          <stop offset="60%"  stopColor="#4a2c0c" />
-          <stop offset="100%" stopColor="#2a1a06" />
-        </linearGradient>
-        <linearGradient id={`bg${id}`} x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%"   stopColor="#e8b84b" />
-          <stop offset="50%"  stopColor="#c4882a" />
-          <stop offset="100%" stopColor="#8b5e1a" />
-        </linearGradient>
-      </defs>
-      <rect x="0" y="0" width="300" height="600" fill={`url(#wg${id})`} />
-      {[0.15,0.3,0.45,0.6,0.75,0.85].map((x,i) => (
-        <line key={i} x1={x*300} y1="0" x2={x*300} y2="600" stroke="rgba(0,0,0,0.14)" strokeWidth="1" />
-      ))}
-      <rect x="12" y="12" width="276" height="576" fill="none" stroke="#c4882a" strokeWidth="2" opacity="0.55" />
-      <rect x="20" y="20" width="260" height="560" fill="none" stroke="#8b5e1a" strokeWidth="1" opacity="0.35" />
-      {/* Upper panel */}
-      <rect x="30" y="30" width="240" height="180" fill="rgba(0,0,0,0.18)" rx="2" />
-      <rect x="35" y="35" width="230" height="170" fill="none" stroke="#c4882a" strokeWidth="1.5" opacity="0.65" />
-      <polygon points="150,50 100,110 200,110" fill="none" stroke="#c4882a" strokeWidth="1.5" opacity="0.8" />
-      <polygon points="150,195 100,135 200,135" fill="none" stroke="#c4882a" strokeWidth="1.5" opacity="0.8" />
-      <polygon points="150,90 170,120 150,150 130,120" fill="none" stroke="#e8b84b" strokeWidth="2" opacity="0.9" />
-      <circle cx="150" cy="120" r="6" fill="#c4882a" opacity="0.8" />
-      <circle cx="150" cy="120" r="3" fill="#e8b84b" opacity="0.9" />
-      {([[40,40],[265,40],[40,195],[265,195]] as [number,number][]).map(([cx,cy],i) => (
-        <g key={i}>
-          <circle cx={cx} cy={cy} r="8" fill="none" stroke="#c4882a" strokeWidth="1.5" opacity="0.65" />
-          <circle cx={cx} cy={cy} r="3" fill="#c4882a" opacity="0.75" />
-        </g>
-      ))}
-      {/* Middle panel */}
-      <rect x="30" y="230" width="240" height="140" fill="rgba(0,0,0,0.14)" rx="2" />
-      <rect x="35" y="235" width="230" height="130" fill="none" stroke="#c4882a" strokeWidth="1.5" opacity="0.45" />
-      {Array.from({length:8},(_,i)=>(
-        <rect key={i} x="40" y={240+i*15} width="220" height="12" fill={i%2===0?"rgba(196,136,42,0.09)":"rgba(139,74,43,0.07)"} />
-      ))}
-      {/* Lower panel — baobab */}
-      <rect x="30" y="390" width="240" height="180" fill="rgba(0,0,0,0.18)" rx="2" />
-      <rect x="35" y="395" width="230" height="170" fill="none" stroke="#c4882a" strokeWidth="1.5" opacity="0.65" />
-      <line x1="150" y1="555" x2="150" y2="490" stroke="#c4882a" strokeWidth="2.5" opacity="0.8" />
-      <line x1="150" y1="520" x2="115" y2="490" stroke="#c4882a" strokeWidth="1.5" opacity="0.7" />
-      <line x1="150" y1="520" x2="185" y2="490" stroke="#c4882a" strokeWidth="1.5" opacity="0.7" />
-      <line x1="150" y1="505" x2="128" y2="478" stroke="#c4882a" strokeWidth="1" opacity="0.55" />
-      <line x1="150" y1="505" x2="172" y2="478" stroke="#c4882a" strokeWidth="1" opacity="0.55" />
-      <circle cx="115" cy="486" r="4" fill="#c4882a" opacity="0.6" />
-      <circle cx="185" cy="486" r="4" fill="#c4882a" opacity="0.6" />
-      <circle cx="128" cy="474" r="3" fill="#c4882a" opacity="0.45" />
-      <circle cx="172" cy="474" r="3" fill="#c4882a" opacity="0.45" />
-      <line x1="150" y1="555" x2="122" y2="574" stroke="#c4882a" strokeWidth="1.5" opacity="0.55" />
-      <line x1="150" y1="555" x2="178" y2="574" stroke="#c4882a" strokeWidth="1.5" opacity="0.55" />
-      {/* Brass handle */}
-      {isLeft ? (
-        <g transform="translate(242,295)">
-          <rect x="0" y="-28" width="14" height="56" rx="4" fill={`url(#bg${id})`} />
-          <rect x="-2" y="-7" width="18" height="14" rx="3" fill={`url(#bg${id})`} />
-          <circle cx="7" cy="0" r="5" fill="#e8b84b" />
-        </g>
-      ) : (
-        <g transform="translate(44,295)">
-          <rect x="0" y="-28" width="14" height="56" rx="4" fill={`url(#bg${id})`} />
-          <rect x="-2" y="-7" width="18" height="14" rx="3" fill={`url(#bg${id})`} />
-          <circle cx="7" cy="0" r="5" fill="#e8b84b" />
-        </g>
-      )}
-      {isLeft  && <rect x="295" y="0" width="5" height="600" fill="rgba(0,0,0,0.45)" />}
-      {!isLeft && <rect x="0"   y="0" width="5" height="600" fill="rgba(0,0,0,0.45)" />}
-    </svg>
   );
 }
 
@@ -705,12 +626,9 @@ function QuoteSection({ direction, quote, credit, accent, bgFrom, bgTo, bgImg }:
 
 // ─── Main App ─────────────────────────────────────────────────────────────────
 export default function App() {
-  const [phase, setPhase] = useState<"entrance" | "inside">("entrance");
-  const [doorsOpen, setDoorsOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [scrollY, setScrollY] = useState(0);
   const lenisRef = useRef<Lenis | null>(null);
-  const entryDone = useRef(false);
 
   // Inject global CSS once
   useEffect(() => {
@@ -730,20 +648,6 @@ export default function App() {
     return () => lenis.destroy();
   }, []);
 
-  // Door opening sequence
-  useEffect(() => {
-    if (entryDone.current) return;
-    entryDone.current = true;
-    const t1 = setTimeout(() => setDoorsOpen(true), 1000);
-    const t2 = setTimeout(() => setPhase("inside"), 3000);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = phase === "entrance" ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [phase]);
-
   const eastProducts  = PRODUCTS.filter((p) => p.region === "east");
   const westProducts  = PRODUCTS.filter((p) => p.region === "west");
   const southProducts = PRODUCTS.filter((p) => p.region === "south");
@@ -753,363 +657,264 @@ export default function App() {
   return (
     <div style={{ fontFamily: "'Jost',sans-serif" }}>
 
-      {/* ── Entrance overlay ──────────────────────────────────────────────── */}
-      <div
-        style={{
-          position: "fixed", inset: 0, zIndex: 40,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          overflow: "hidden",
-          opacity: phase === "entrance" ? 1 : 0,
-          pointerEvents: phase === "entrance" ? "all" : "none",
-          transition: "opacity 1.2s ease 0.2s",
-        }}
-      >
-        {/* Savanna sky */}
-        <div style={{ position: "absolute", inset: 0 }}>
-          <img src={IMAGES.savanna} alt="African savanna at golden hour" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(5,3,1,0.35) 0%,rgba(5,3,1,0.2) 40%,rgba(5,3,1,0.65) 100%)" }} />
+      <ParticleCanvas active={true} />
+
+      {/* ── Hero / Foyer ─────────────────────────────────────────────────── */}
+      <section style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", overflow: "hidden", background: "linear-gradient(180deg,#0d0905 0%,#1a0e06 100%)" }}>
+        <LightRays />
+        {/* Boutique image — top half */}
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
+          <img
+            src={IMAGES.boutique}
+            alt=""
+            aria-hidden
+            style={{
+              width: "100%", height: "200%",
+              objectFit: "cover", objectPosition: "top center",
+              display: "block",
+              transform: `translateY(${heroParallax * 0.4}px)`,
+              opacity: 0.22,
+            }}
+          />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(13,9,5,0.55) 0%,rgba(13,9,5,0.3) 40%,rgba(13,9,5,0.75) 100%)" }} />
         </div>
-
-        {/* Archway container */}
-        <div style={{ position: "absolute", inset: "0 0 0 0", display: "flex", justifyContent: "center" }}>
-          <div style={{ position: "relative", width: "min(680px,90vw)", height: "100%" }}>
-
-            {/* Top header stone */}
-            <div style={{
-              position: "absolute", top: 0, left: 0, right: 0,
-              padding: "16px 0", textAlign: "center",
-              background: "linear-gradient(180deg,#2a1a06,#1a0e04)",
-              borderBottom: "2px solid rgba(196,136,42,0.45)",
-            }}>
-              <div style={{ fontFamily: "'Playfair Display',serif", color: "#c4882a", fontSize: "clamp(0.7rem,2vw,1.05rem)", letterSpacing: "0.4em", textTransform: "uppercase", fontWeight: 400 }}>
-                ✦ &nbsp; Urithi Boutique &nbsp; ✦
-              </div>
-              <div style={{ fontFamily: "'DM Mono',monospace", color: "#a08060", fontSize: "0.58rem", letterSpacing: "0.28em", textTransform: "uppercase", marginTop: 6 }}>
-                Est. Heritage &nbsp;·&nbsp; Nairobi &nbsp;·&nbsp; Accra &nbsp;·&nbsp; Cape Town
-              </div>
-            </div>
-
-            {/* Lanterns */}
-            <FloatingLantern x="10%"  delay="0s" />
-            <FloatingLantern x="90%"  delay="1.5s" />
-
-            {/* Doors */}
-            <div style={{
-              position: "absolute", bottom: 0, left: "15%", right: "15%", height: "78%",
-              perspective: "1100px", perspectiveOrigin: "50% 80%",
-              display: "flex",
-            }}>
-              {/* Left door */}
-              <div style={{
-                width: "50%", height: "100%",
-                transformOrigin: "left center",
-                transform: doorsOpen ? "rotateY(-114deg)" : "rotateY(0deg)",
-                transition: "transform 1.8s cubic-bezier(0.76,0,0.24,1) 0.1s",
-                transformStyle: "preserve-3d",
-              }}>
-                <AfricanDoor side="left" />
-              </div>
-              {/* Right door */}
-              <div style={{
-                width: "50%", height: "100%",
-                transformOrigin: "right center",
-                transform: doorsOpen ? "rotateY(114deg)" : "rotateY(0deg)",
-                transition: "transform 1.8s cubic-bezier(0.76,0,0.24,1) 0.1s",
-                transformStyle: "preserve-3d",
-              }}>
-                <AfricanDoor side="right" />
-              </div>
-
-              {/* Interior glow */}
-              <div style={{
-                position: "absolute", inset: 0,
-                background: "radial-gradient(ellipse at 50% 100%,rgba(255,200,80,0.28) 0%,transparent 70%)",
-                opacity: doorsOpen ? 1 : 0,
-                transition: "opacity 1.2s ease 0.8s",
-                pointerEvents: "none",
-              }} />
-            </div>
-
-            {/* Stone step */}
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "5%", background: "linear-gradient(90deg,#2a1a06,#3d2408,#2a1a06)", borderTop: "2px solid rgba(196,136,42,0.38)" }} />
-          </div>
+        {/* Arch background SVG */}
+        <div style={{ position: "absolute", inset: 0, display: "flex", justifyContent: "center", pointerEvents: "none" }}>
+          <svg viewBox="0 0 800 900" style={{ height: "100%", opacity: 0.09 }} preserveAspectRatio="xMidYMid slice">
+            <ellipse cx="400" cy="900" rx="380" ry="700" fill="none" stroke="#c4882a" strokeWidth="1.5" />
+            <ellipse cx="400" cy="900" rx="280" ry="580" fill="none" stroke="#c4882a" strokeWidth="0.8" />
+          </svg>
         </div>
+        <FloatingLantern x="18%"  delay="0s" />
+        <FloatingLantern x="50%"  delay="1s" />
+        <FloatingLantern x="82%"  delay="0.5s" />
 
-        {/* Enter prompt */}
+        {/* Hero text */}
         <div style={{
-          position: "absolute", bottom: 28, left: 0, right: 0, textAlign: "center",
-          fontFamily: "'DM Mono',monospace", color: "#c4882a", fontSize: "0.62rem",
-          letterSpacing: "0.28em", textTransform: "uppercase",
-          opacity: doorsOpen ? 1 : 0, transition: "opacity 0.8s ease 1.5s",
-          animation: "breathe 2s ease-in-out infinite",
+          position: "relative", zIndex: 1, textAlign: "center", padding: "0 24px", maxWidth: 700,
+          opacity: 1,
+          transform: "translateY(0)",
+          transition: "opacity 1.2s ease 0.5s, transform 1.2s cubic-bezier(0.25,0.46,0.45,0.94) 0.5s",
         }}>
-          Entering the boutique…
-        </div>
-      </div>
-
-      {/* ── Main boutique content ──────────────────────────────────────────── */}
-      <div style={{ opacity: phase === "inside" ? 1 : 0, transition: "opacity 1.5s ease 0.3s" }}>
-
-        <ParticleCanvas active={phase === "inside"} />
-
-        {/* ── Hero / Foyer ─────────────────────────────────────────────────── */}
-        <section style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", overflow: "hidden", background: "linear-gradient(180deg,#0d0905 0%,#1a0e06 100%)" }}>
-          <LightRays />
-          {/* Boutique image — top half */}
-          <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
-            <img
-              src={IMAGES.boutique}
-              alt=""
-              aria-hidden
-              style={{
-                width: "100%", height: "200%",
-                objectFit: "cover", objectPosition: "top center",
-                display: "block",
-                transform: `translateY(${heroParallax * 0.4}px)`,
-                opacity: 0.22,
-              }}
-            />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(13,9,5,0.55) 0%,rgba(13,9,5,0.3) 40%,rgba(13,9,5,0.75) 100%)" }} />
-          </div>
-          {/* Arch background SVG */}
-          <div style={{ position: "absolute", inset: 0, display: "flex", justifyContent: "center", pointerEvents: "none" }}>
-            <svg viewBox="0 0 800 900" style={{ height: "100%", opacity: 0.09 }} preserveAspectRatio="xMidYMid slice">
-              <ellipse cx="400" cy="900" rx="380" ry="700" fill="none" stroke="#c4882a" strokeWidth="1.5" />
-              <ellipse cx="400" cy="900" rx="280" ry="580" fill="none" stroke="#c4882a" strokeWidth="0.8" />
-            </svg>
-          </div>
-          <FloatingLantern x="18%"  delay="0s" />
-          <FloatingLantern x="50%"  delay="1s" />
-          <FloatingLantern x="82%"  delay="0.5s" />
-
-          {/* Hero text */}
           <div style={{
-            position: "relative", zIndex: 1, textAlign: "center", padding: "0 24px", maxWidth: 700,
-            opacity: phase === "inside" ? 1 : 0,
-            transform: phase === "inside" ? "translateY(0)" : "translateY(40px)",
-            transition: "opacity 1.2s ease 0.5s, transform 1.2s cubic-bezier(0.25,0.46,0.45,0.94) 0.5s",
+            display: "inline-block", marginBottom: 24,
+            padding: "7px 20px",
+            border: "1px solid rgba(196,136,42,0.3)",
+            fontFamily: "'DM Mono',monospace", color: "#c4882a",
+            fontSize: "0.6rem", letterSpacing: "0.34em", textTransform: "uppercase",
           }}>
+            ✦ &nbsp; Welcome to Urithi &nbsp; ✦
+          </div>
+          <h1 style={{
+            margin: "0 0 20px",
+            fontFamily: "'Playfair Display',serif", color: "#f0e4cc",
+            fontSize: "clamp(2.6rem,7vw,5.2rem)", fontWeight: 400,
+            lineHeight: 1.06, letterSpacing: "-0.01em",
+          }}>
+            African Craft,<br />
+            <em style={{ color: "#c4882a", fontStyle: "italic" }}>Elevated</em>
+          </h1>
+          <p style={{
+            margin: "0 auto 44px", maxWidth: 480,
+            fontFamily: "'Jost',sans-serif", color: "#a08060",
+            fontSize: "0.97rem", fontWeight: 300, lineHeight: 1.95, letterSpacing: "0.02em",
+          }}>
+            Each piece in our collection is sourced directly from master artisans across the continent.
+            Every object carries a story. Every purchase sustains a tradition.
+          </p>
+          <a
+            href="#east"
+            style={{
+              display: "inline-block", padding: "14px 36px",
+              border: "1px solid rgba(196,136,42,0.45)", color: "#c4882a",
+              fontFamily: "'DM Mono',monospace", fontSize: "0.64rem",
+              letterSpacing: "0.24em", textTransform: "uppercase", textDecoration: "none",
+              transition: "background 0.2s ease, border-color 0.2s ease",
+            }}
+            onMouseEnter={(e) => { const a = e.currentTarget; a.style.background = "rgba(196,136,42,0.1)"; a.style.borderColor = "rgba(196,136,42,0.9)"; }}
+            onMouseLeave={(e) => { const a = e.currentTarget; a.style.background = "transparent"; a.style.borderColor = "rgba(196,136,42,0.45)"; }}
+          >
+            Begin Your Journey
+          </a>
+        </div>
+
+        {/* Scroll cue */}
+        <div style={{
+          position: "absolute", bottom: 36, left: "50%", transform: "translateX(-50%)",
+          display: "flex", flexDirection: "column", alignItems: "center", gap: 10,
+          opacity: 1,
+          transition: "opacity 1s ease 2s",
+        }}>
+          <div style={{ fontFamily: "'DM Mono',monospace", color: "#a08060", fontSize: "0.53rem", letterSpacing: "0.24em", textTransform: "uppercase" }}>
+            Scroll to explore
+          </div>
+          <div style={{ width: 1, height: 38, background: "linear-gradient(to bottom,rgba(196,136,42,0.8),transparent)", animation: "scrollLine 1.8s ease-in-out infinite" }} />
+        </div>
+      </section>
+
+      <Divider />
+
+      {/* ── East African Gallery ────────────────────────────────────────── */}
+      <GallerySection
+        id="east"
+        title="East African Gallery"
+        subtitle="Maasai · Kikuyu · Swahili Coast"
+        products={eastProducts}
+        onProductClick={setSelectedProduct}
+        bgFrom="#100806"
+        bgTo="#0d0905"
+        accent="#c4882a"
+      />
+
+      {/* ── Quote — West Africa ──────────────────────────────────────────── */}
+      <QuoteSection
+        direction="Continuing West"
+        quote="&ldquo;The art of the hands<br/><em style='color:#8b4a2b'>is the voice of the soul.&rdquo;</em>"
+        credit="Akan Proverb, Ghana"
+        accent="#8b4a2b"
+        bgFrom="#0d0905"
+        bgTo="#12080a"
+        bgImg={IMAGES.sunset}
+      />
+
+      {/* ── West African Gallery ────────────────────────────────────────── */}
+      <GallerySection
+        id="west"
+        title="West African Gallery"
+        subtitle="Ashanti · Yoruba · Benin Kingdom"
+        products={westProducts}
+        onProductClick={setSelectedProduct}
+        bgFrom="#0d0905"
+        bgTo="#100a06"
+        accent="#8b4a2b"
+      />
+
+      {/* ── Quote — Southern Africa ──────────────────────────────────────── */}
+      <QuoteSection
+        direction="Heading South"
+        quote="&ldquo;Ubuntu — <em style='color:#4a7a8a'>I am</em><br/>because we are.&rdquo;"
+        credit="Nguni Bantu Philosophy"
+        accent="#4a7a8a"
+        bgFrom="#100a06"
+        bgTo="#0a0d0e"
+      />
+
+      {/* ── Southern African Gallery ─────────────────────────────────────── */}
+      <GallerySection
+        id="south"
+        title="Southern African Gallery"
+        subtitle="Ndebele · Zulu · San · Shona"
+        products={southProducts}
+        onProductClick={setSelectedProduct}
+        bgFrom="#0d0905"
+        bgTo="#0a0e10"
+        accent="#4a7a8a"
+      />
+
+      {/* ── Footer CTA ───────────────────────────────────────────────────── */}
+      <section style={{ position: "relative", padding: "100px 24px", overflow: "hidden", background: "#080603" }}>
+        {/* Boutique image — bottom half */}
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
+          <img
+            src={IMAGES.boutique}
+            alt=""
+            aria-hidden
+            style={{
+              width: "100%", height: "200%",
+              objectFit: "cover", objectPosition: "bottom center",
+              display: "block",
+              position: "absolute", bottom: 0, left: 0,
+              opacity: 0.2,
+            }}
+          />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(8,6,3,0.85) 0%,rgba(8,6,3,0.55) 50%,rgba(8,6,3,0.85) 100%)" }} />
+        </div>
+        <div style={{ position: "absolute", inset: 0, display: "flex", justifyContent: "center", alignItems: "flex-end", pointerEvents: "none", opacity: 0.06 }}>
+          <svg viewBox="0 0 600 400" width="100%" height="100%">
+            <circle cx="300" cy="400" r="340" fill="none" stroke="#c4882a" strokeWidth="1" />
+            <circle cx="300" cy="400" r="240" fill="none" stroke="#c4882a" strokeWidth="0.5" />
+          </svg>
+        </div>
+        <div style={{ maxWidth: 680, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
+          <FadeUp>
             <div style={{
               display: "inline-block", marginBottom: 24,
-              padding: "7px 20px",
-              border: "1px solid rgba(196,136,42,0.3)",
+              padding: "6px 16px",
+              border: "1px solid rgba(196,136,42,0.28)",
               fontFamily: "'DM Mono',monospace", color: "#c4882a",
-              fontSize: "0.6rem", letterSpacing: "0.34em", textTransform: "uppercase",
+              fontSize: "0.58rem", letterSpacing: "0.28em", textTransform: "uppercase",
             }}>
-              ✦ &nbsp; Welcome to Urithi &nbsp; ✦
+              Every Purchase Preserves a Lineage
             </div>
-            <h1 style={{
-              margin: "0 0 20px",
-              fontFamily: "'Playfair Display',serif", color: "#f0e4cc",
-              fontSize: "clamp(2.6rem,7vw,5.2rem)", fontWeight: 400,
-              lineHeight: 1.06, letterSpacing: "-0.01em",
-            }}>
-              African Craft,<br />
-              <em style={{ color: "#c4882a", fontStyle: "italic" }}>Elevated</em>
-            </h1>
-            <p style={{
-              margin: "0 auto 44px", maxWidth: 480,
-              fontFamily: "'Jost',sans-serif", color: "#a08060",
-              fontSize: "0.97rem", fontWeight: 300, lineHeight: 1.95, letterSpacing: "0.02em",
-            }}>
-              Each piece in our collection is sourced directly from master artisans across the continent.
-              Every object carries a story. Every purchase sustains a tradition.
+            <div style={{ fontFamily: "'Playfair Display',serif", color: "#f0e4cc", fontSize: "clamp(2rem,5vw,3.8rem)", fontWeight: 400, lineHeight: 1.15, marginBottom: 28 }}>
+              Carry the continent<br /><em style={{ color: "#c4882a" }}>with you.</em>
+            </div>
+            <p style={{ color: "#a08060", fontFamily: "'Jost',sans-serif", fontSize: "0.94rem", fontWeight: 300, lineHeight: 1.9, marginBottom: 44, maxWidth: 500, margin: "0 auto 44px" }}>
+              Urithi means heritage in Swahili. We exist to honour the artisans whose hands shape these objects and to bring the beauty of African craft into homes worldwide.
             </p>
-            <a
-              href="#east"
-              style={{
-                display: "inline-block", padding: "14px 36px",
-                border: "1px solid rgba(196,136,42,0.45)", color: "#c4882a",
-                fontFamily: "'DM Mono',monospace", fontSize: "0.64rem",
-                letterSpacing: "0.24em", textTransform: "uppercase", textDecoration: "none",
-                transition: "background 0.2s ease, border-color 0.2s ease",
-              }}
-              onMouseEnter={(e) => { const a = e.currentTarget; a.style.background = "rgba(196,136,42,0.1)"; a.style.borderColor = "rgba(196,136,42,0.9)"; }}
-              onMouseLeave={(e) => { const a = e.currentTarget; a.style.background = "transparent"; a.style.borderColor = "rgba(196,136,42,0.45)"; }}
-            >
-              Begin Your Journey
-            </a>
-          </div>
-
-          {/* Scroll cue */}
-          <div style={{
-            position: "absolute", bottom: 36, left: "50%", transform: "translateX(-50%)",
-            display: "flex", flexDirection: "column", alignItems: "center", gap: 10,
-            opacity: phase === "inside" ? 1 : 0, transition: "opacity 1s ease 2s",
-          }}>
-            <div style={{ fontFamily: "'DM Mono',monospace", color: "#a08060", fontSize: "0.53rem", letterSpacing: "0.24em", textTransform: "uppercase" }}>
-              Scroll to explore
+            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+              <button
+                style={{ padding: "15px 40px", border: "none", background: "#c4882a", color: "#0d0905", fontFamily: "'DM Mono',monospace", fontSize: "0.68rem", letterSpacing: "0.2em", textTransform: "uppercase", cursor: "pointer", transition: "background 0.2s ease" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#d4982e"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#c4882a"; }}
+              >
+                Shop All Collections
+              </button>
+              <button
+                style={{ padding: "15px 40px", border: "1px solid rgba(196,136,42,0.35)", background: "transparent", color: "#c4882a", fontFamily: "'DM Mono',monospace", fontSize: "0.68rem", letterSpacing: "0.2em", textTransform: "uppercase", cursor: "pointer", transition: "border-color 0.2s ease" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(196,136,42,0.9)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(196,136,42,0.35)"; }}
+              >
+                Our Artisans
+              </button>
             </div>
-            <div style={{ width: 1, height: 38, background: "linear-gradient(to bottom,rgba(196,136,42,0.8),transparent)", animation: "scrollLine 1.8s ease-in-out infinite" }} />
-          </div>
-        </section>
-
-        <Divider />
-
-        {/* ── East African Gallery ────────────────────────────────────────── */}
-        <GallerySection
-          id="east"
-          title="East African Gallery"
-          subtitle="Maasai · Kikuyu · Swahili Coast"
-          products={eastProducts}
-          onProductClick={setSelectedProduct}
-          bgFrom="#100806"
-          bgTo="#0d0905"
-          accent="#c4882a"
-        />
-
-        {/* ── Quote — West Africa ──────────────────────────────────────────── */}
-        <QuoteSection
-          direction="Continuing West"
-          quote="&ldquo;The art of the hands<br/><em style='color:#8b4a2b'>is the voice of the soul.&rdquo;</em>"
-          credit="Akan Proverb, Ghana"
-          accent="#8b4a2b"
-          bgFrom="#0d0905"
-          bgTo="#12080a"
-          bgImg={IMAGES.sunset}
-        />
-
-        {/* ── West African Gallery ────────────────────────────────────────── */}
-        <GallerySection
-          id="west"
-          title="West African Gallery"
-          subtitle="Ashanti · Yoruba · Benin Kingdom"
-          products={westProducts}
-          onProductClick={setSelectedProduct}
-          bgFrom="#0d0905"
-          bgTo="#100a06"
-          accent="#8b4a2b"
-        />
-
-        {/* ── Quote — Southern Africa ──────────────────────────────────────── */}
-        <QuoteSection
-          direction="Heading South"
-          quote="&ldquo;Ubuntu — <em style='color:#4a7a8a'>I am</em><br/>because we are.&rdquo;"
-          credit="Nguni Bantu Philosophy"
-          accent="#4a7a8a"
-          bgFrom="#100a06"
-          bgTo="#0a0d0e"
-        />
-
-        {/* ── Southern African Gallery ─────────────────────────────────────── */}
-        <GallerySection
-          id="south"
-          title="Southern African Gallery"
-          subtitle="Ndebele · Zulu · San · Shona"
-          products={southProducts}
-          onProductClick={setSelectedProduct}
-          bgFrom="#0d0905"
-          bgTo="#0a0e10"
-          accent="#4a7a8a"
-        />
-
-        {/* ── Footer CTA ───────────────────────────────────────────────────── */}
-        <section style={{ position: "relative", padding: "100px 24px", overflow: "hidden", background: "#080603" }}>
-          {/* Boutique image — bottom half */}
-          <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
-            <img
-              src={IMAGES.boutique}
-              alt=""
-              aria-hidden
-              style={{
-                width: "100%", height: "200%",
-                objectFit: "cover", objectPosition: "bottom center",
-                display: "block",
-                position: "absolute", bottom: 0, left: 0,
-                opacity: 0.2,
-              }}
-            />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(8,6,3,0.85) 0%,rgba(8,6,3,0.55) 50%,rgba(8,6,3,0.85) 100%)" }} />
-          </div>
-          <div style={{ position: "absolute", inset: 0, display: "flex", justifyContent: "center", alignItems: "flex-end", pointerEvents: "none", opacity: 0.06 }}>
-            <svg viewBox="0 0 600 400" width="100%" height="100%">
-              <circle cx="300" cy="400" r="340" fill="none" stroke="#c4882a" strokeWidth="1" />
-              <circle cx="300" cy="400" r="240" fill="none" stroke="#c4882a" strokeWidth="0.5" />
-            </svg>
-          </div>
-          <div style={{ maxWidth: 680, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
-            <FadeUp>
-              <div style={{
-                display: "inline-block", marginBottom: 24,
-                padding: "6px 16px",
-                border: "1px solid rgba(196,136,42,0.28)",
-                fontFamily: "'DM Mono',monospace", color: "#c4882a",
-                fontSize: "0.58rem", letterSpacing: "0.28em", textTransform: "uppercase",
-              }}>
-                Every Purchase Preserves a Lineage
+            <div style={{ marginTop: 80, paddingTop: 28, borderTop: "1px solid rgba(196,136,42,0.1)" }}>
+              <div style={{ fontFamily: "'Playfair Display',serif", color: "#c4882a", fontSize: "1.35rem", letterSpacing: "0.24em", textTransform: "uppercase", fontWeight: 400 }}>
+                Urithi
               </div>
-              <div style={{ fontFamily: "'Playfair Display',serif", color: "#f0e4cc", fontSize: "clamp(2rem,5vw,3.8rem)", fontWeight: 400, lineHeight: 1.15, marginBottom: 28 }}>
-                Carry the continent<br /><em style={{ color: "#c4882a" }}>with you.</em>
+              <div style={{ marginTop: 8, fontFamily: "'DM Mono',monospace", color: "#3a2510", fontSize: "0.56rem", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+                Nairobi &nbsp;·&nbsp; Accra &nbsp;·&nbsp; Cape Town &nbsp;·&nbsp; London
               </div>
-              <p style={{ color: "#a08060", fontFamily: "'Jost',sans-serif", fontSize: "0.94rem", fontWeight: 300, lineHeight: 1.9, marginBottom: 44, maxWidth: 500, margin: "0 auto 44px" }}>
-                Urithi means heritage in Swahili. We exist to honour the artisans whose hands shape these objects and to bring the beauty of African craft into homes worldwide.
-              </p>
-              <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-                <button
-                  style={{ padding: "15px 40px", border: "none", background: "#c4882a", color: "#0d0905", fontFamily: "'DM Mono',monospace", fontSize: "0.68rem", letterSpacing: "0.2em", textTransform: "uppercase", cursor: "pointer", transition: "background 0.2s ease" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#d4982e"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#c4882a"; }}
-                >
-                  Shop All Collections
-                </button>
-                <button
-                  style={{ padding: "15px 40px", border: "1px solid rgba(196,136,42,0.35)", background: "transparent", color: "#c4882a", fontFamily: "'DM Mono',monospace", fontSize: "0.68rem", letterSpacing: "0.2em", textTransform: "uppercase", cursor: "pointer", transition: "border-color 0.2s ease" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(196,136,42,0.9)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(196,136,42,0.35)"; }}
-                >
-                  Our Artisans
-                </button>
-              </div>
-              <div style={{ marginTop: 80, paddingTop: 28, borderTop: "1px solid rgba(196,136,42,0.1)" }}>
-                <div style={{ fontFamily: "'Playfair Display',serif", color: "#c4882a", fontSize: "1.35rem", letterSpacing: "0.24em", textTransform: "uppercase", fontWeight: 400 }}>
-                  Urithi
-                </div>
-                <div style={{ marginTop: 8, fontFamily: "'DM Mono',monospace", color: "#3a2510", fontSize: "0.56rem", letterSpacing: "0.18em", textTransform: "uppercase" }}>
-                  Nairobi &nbsp;·&nbsp; Accra &nbsp;·&nbsp; Cape Town &nbsp;·&nbsp; London
-                </div>
-              </div>
-            </FadeUp>
-          </div>
-        </section>
-      </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
 
       {/* ── Sticky navigation ─────────────────────────────────────────────── */}
-      {phase === "inside" && (
-        <nav style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 30,
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "18px 32px",
-          background: navSolid ? "rgba(13,9,5,0.95)" : "transparent",
-          backdropFilter: navSolid ? "blur(20px)" : "none",
-          borderBottom: navSolid ? "1px solid rgba(196,136,42,0.11)" : "none",
-          transition: "background 0.4s ease, backdrop-filter 0.4s ease",
-          animation: "fadeIn 0.8s ease 0.5s both",
-        }}>
-          <div style={{ fontFamily: "'Playfair Display',serif", color: "#c4882a", fontSize: "1.15rem", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 400 }}>
-            Urithi
-          </div>
-          <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
-            {([ ["East Africa","#east"], ["West Africa","#west"], ["South Africa","#south"] ] as [string,string][]).map(([label, href]) => (
-              <a
-                key={href}
-                href={href}
-                style={{ fontFamily: "'DM Mono',monospace", color: "#a08060", fontSize: "0.6rem", letterSpacing: "0.16em", textTransform: "uppercase", textDecoration: "none", transition: "color 0.2s ease" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#c4882a"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#a08060"; }}
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-          <button
-            style={{ padding: "9px 22px", background: "transparent", border: "1px solid rgba(196,136,42,0.38)", color: "#c4882a", fontFamily: "'DM Mono',monospace", fontSize: "0.58rem", letterSpacing: "0.18em", textTransform: "uppercase", cursor: "pointer", transition: "border-color 0.2s ease" }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(196,136,42,0.9)"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(196,136,42,0.38)"; }}
-          >
-            ✦ Commission
-          </button>
-        </nav>
-      )}
+      <nav style={{
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 30,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "18px 32px",
+        background: navSolid ? "rgba(13,9,5,0.95)" : "transparent",
+        backdropFilter: navSolid ? "blur(20px)" : "none",
+        borderBottom: navSolid ? "1px solid rgba(196,136,42,0.11)" : "none",
+        transition: "background 0.4s ease, backdrop-filter 0.4s ease",
+        animation: "fadeIn 0.8s ease 0.5s both",
+      }}>
+        <div style={{ fontFamily: "'Playfair Display',serif", color: "#c4882a", fontSize: "1.15rem", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 400 }}>
+          Urithi
+        </div>
+        <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
+          {([ ["East Africa","#east"], ["West Africa","#west"], ["South Africa","#south"] ] as [string,string][]).map(([label, href]) => (
+            <a
+              key={href}
+              href={href}
+              style={{ fontFamily: "'DM Mono',monospace", color: "#a08060", fontSize: "0.6rem", letterSpacing: "0.16em", textTransform: "uppercase", textDecoration: "none", transition: "color 0.2s ease" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#c4882a"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#a08060"; }}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+        <button
+          style={{ padding: "9px 22px", background: "transparent", border: "1px solid rgba(196,136,42,0.38)", color: "#c4882a", fontFamily: "'DM Mono',monospace", fontSize: "0.58rem", letterSpacing: "0.18em", textTransform: "uppercase", cursor: "pointer", transition: "border-color 0.2s ease" }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(196,136,42,0.9)"; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(196,136,42,0.38)"; }}
+        >
+          ✦ Commission
+        </button>
+      </nav>
 
       {/* ── Product Modal ─────────────────────────────────────────────────── */}
       <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
